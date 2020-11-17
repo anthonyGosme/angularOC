@@ -10,3 +10,8 @@ http://localhost:4200
 npm install bootstrap --save
 npm install rxjs-compat --save
 npm install bootstrap@3.3.7 --save
+
+# creer un component
+
+ng generate component mon-premier
+ng generate component appareil
