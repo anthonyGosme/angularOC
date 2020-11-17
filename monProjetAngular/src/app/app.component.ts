@@ -7,9 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   isAuth : boolean  = false ;
-  appareil1 = "machine à laver"
-  appareil2 = "télévision"
-  appareil3 = "oridinateur"
+  appareils = [
+    {name:"machine à laver",status:"allumé"},
+    {name:"télévision",status:"allumé"},
+    {name:"oridinateur",status:"éteint"}
+]
+
   onAllumer(){
     console.log("allumer tout") ;
   }
