@@ -7,7 +7,8 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
-  lastUpdate = new Promise(
+  
+  lastUpdate: Promise<Date> = new Promise(
     (resolve, reject) => {
       const date = new Date() ;
       setTimeout(() => {
