@@ -12,7 +12,7 @@ import { AppareilViewComponent } from './appareil-view/appareil-view.component';
 import { Routes,RouterModule } from '@angular/router';
 
 const appRoutes: Routes=[
-  {path:'appareils', component:AppareilComponent},
+  {path:'appareils', component:AppareilViewComponent},
   {path:'auth', component:AuthComponent},
   {path:'', component:AppareilViewComponent}
 ];
