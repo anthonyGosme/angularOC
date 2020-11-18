@@ -21,7 +21,10 @@ export class AppComponent implements OnInit{
   isAuth: boolean = false;
 
   onAllumer() {
-    console.log('allumer tout');
+    this.appareilService.switchOnAll() ;
+  }
+  onEteindre() {
+    this.appareilService.switchOffAll() ;
   }
   appareils: any[]=[];
   constructor(private appareilService : AppareilService) {
@@ -32,4 +35,5 @@ export class AppComponent implements OnInit{
   ngOnInit(){
     this.appareils = this.appareilService.appareils ;
   }
+
 }
