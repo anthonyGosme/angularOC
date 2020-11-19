@@ -14,11 +14,13 @@ import { AuthService } from './service/authService';
 import { SimpleAppareilComponent } from './simple-appareil/simple-appareil.component';
 import { FourOFourComponent } from './four-ofour/four-ofour.component';
 import { AuthGuard } from './service/authGuardService';
+import { EditAppareilComponent } from './edit-appareil/edit-appareil.component';
 
 const appRoutes: Routes = [
   { path: 'appareils',canActivate:[AuthGuard], component: AppareilViewComponent },
   { path: 'appareils/:id', canActivate:[AuthGuard], component: SimpleAppareilComponent },
   { path: 'auth', component: AuthComponent },
+  { path: 'edit', canActivate:[AuthGuard], component: EditAppareilComponent },
   { path: '',canActivate:[AuthGuard], component: AppareilViewComponent },
   { path: 'not-found', component: FourOFourComponent },
   { path: '**', redirectTo: '/not-found' }
@@ -31,7 +33,8 @@ const appRoutes: Routes = [
     AuthComponent,
     AppareilViewComponent,
     SimpleAppareilComponent,
-    FourOFourComponent
+    FourOFourComponent,
+    EditAppareilComponent
   ],
   imports: [BrowserModule, FormsModule, RouterModule.forRoot(appRoutes)],
   providers: [AppareilService, AuthService, AuthGuard],
