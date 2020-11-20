@@ -16,7 +16,7 @@ export class AppareilViewComponent implements OnInit {
       const date = new Date() ;
       setTimeout(() => {
         resolve(date)
-      }, 2000
+      }, 1000
       )
     }
   );
@@ -33,7 +33,7 @@ export class AppareilViewComponent implements OnInit {
   constructor(private appareilService : AppareilService) {
     setTimeout(() => {
       this.isAuth = true;
-    }, 4000);
+    }, 1000);
   }
   ngOnInit(){
     this.appareilSubscrition = this.appareilService.appareilSubject.subscribe(

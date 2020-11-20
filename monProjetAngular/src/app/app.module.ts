@@ -17,20 +17,29 @@ import { AuthGuard } from './service/authGuardService';
 import { EditAppareilComponent } from './edit-appareil/edit-appareil.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserService } from './service/UserService';
+import { NewUserComponent } from './new-user/new-user.component';
 
 const appRoutes: Routes = [
-  { path: 'appareils',canActivate:[AuthGuard], component: AppareilViewComponent },
-  { path: 'appareils/:id', canActivate:[AuthGuard], component: SimpleAppareilComponent },
+  {
+    path: 'appareils',
+    canActivate: [AuthGuard],
+    component: AppareilViewComponent
+  },
+  {
+    path: 'appareils/:id',
+    canActivate: [AuthGuard],
+    component: SimpleAppareilComponent
+  },
   { path: 'auth', component: AuthComponent },
-  { path: 'edit', canActivate:[AuthGuard], component: EditAppareilComponent },
-  { path: 'user',  component: UserListComponent },
-  { path: '',canActivate:[AuthGuard], component: AppareilViewComponent },
+  { path: 'edit', canActivate: [AuthGuard], component: EditAppareilComponent },
+  { path: 'user', canActivate: [AuthGuard], component: UserListComponent },
+  { path: 'newUser', canActivate: [AuthGuard], component: NewUserComponent },
+  { path: '', canActivate: [AuthGuard], component: AppareilViewComponent },
   { path: 'not-found', component: FourOFourComponent },
   { path: '**', redirectTo: '/not-found' }
 ];
 @NgModule({
   declarations: [
-   
     AppComponent,
     MonPremierComponent,
     AppareilComponent,
@@ -39,9 +48,15 @@ const appRoutes: Routes = [
     SimpleAppareilComponent,
     FourOFourComponent,
     EditAppareilComponent,
-    UserListComponent
+    UserListComponent,
+    NewUserComponent
   ],
-  imports: [ ReactiveFormsModule,BrowserModule, FormsModule, RouterModule.forRoot(appRoutes)],
+  imports: [
+    ReactiveFormsModule,
+    BrowserModule,
+    FormsModule,
+    RouterModule.forRoot(appRoutes)
+  ],
   providers: [AppareilService, AuthService, AuthGuard, UserService],
   bootstrap: [AppComponent]
 })

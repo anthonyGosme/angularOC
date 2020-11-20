@@ -5,7 +5,7 @@ export class AuthService {
       setTimeout(() => {
         this.isAuth = true;
         resolve(true);
-      }, 2000);
+      }, 1000);
     });
   }
 
