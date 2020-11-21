@@ -35,6 +35,16 @@ export class AppareilViewComponent implements OnInit {
       this.isAuth = true;
     }, 1000);
   }
+
+  onSave(){
+    this.appareilService.saveAppareilToDb() ;
+  }
+  onLoad(){
+    this.appareilService.loadAppareilFromDb() ;
+    this.appareilService.emitAppareilSubject() ;
+  }
+
+  
   ngOnInit(){
     this.appareilSubscrition = this.appareilService.appareilSubject.subscribe(
       (appareils : any[])=>{
