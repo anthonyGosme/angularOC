@@ -1,4 +1,9 @@
 https://openclassrooms.com/en/courses/4668271-developpez-des-applications-web-avec-angular/
+#firebase
+npm view firebase versions
+npm install firebase@7.23.0 --save
+
+
 
 # installation
 npm install -g npm@latest
