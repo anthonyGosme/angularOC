@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
-    firebase.auth().onAuthStateChanged(
+    firebase.auth().onAuthStateChanged( //** declanché au changment etat authentication */
       (user) => {
         if(user) {
           this.isAuth = true;

@@ -38,6 +38,7 @@ export class SignInComponent implements OnInit {
 
     this.authService.signInUser(email, password).then(
       () => {
+        console.log("connection OK") ;
         this.router.navigate(['/books']);
       },
       error => {
