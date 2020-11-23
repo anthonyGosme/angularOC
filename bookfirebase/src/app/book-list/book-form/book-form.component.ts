@@ -11,16 +11,21 @@ import { BooksService } from 'src/app/service/books.service';
   styleUrls: ['./book-form.component.scss']
 })
 export class BookFormComponent implements OnInit {
-
   bookForm: FormGroup;
+  fileIsUploading: boolean = false;
+  fileUrl: string = '';
+  fileUploaded: boolean = false;
 
-  constructor(private formBuilder: FormBuilder, private booksService: BooksService,
-              private router: Router) { }
-              
+  constructor(
+    private formBuilder: FormBuilder,
+    private booksService: BooksService,
+    private router: Router
+  ) {}
+
   ngOnInit() {
     this.initForm();
   }
-  
+
   initForm() {
     this.bookForm = this.formBuilder.group({
       title: ['', Validators.required],
@@ -28,15 +33,31 @@ export class BookFormComponent implements OnInit {
       synopsis: ''
     });
   }
-  
+
   onSaveBook() {
     const title = this.bookForm.get('title').value;
     const author = this.bookForm.get('author').value;
     const synopsis = this.bookForm.get('synopsis').value;
     const newBook = new Book(title, author);
+    if(this.fileUrl && this.fileUrl !='')
+    {
+      newBook.photo =  this.fileUrl ;
+    }
     newBook.synopsis = synopsis;
     this.booksService.createNewBook(newBook);
     this.router.navigate(['/books']);
   }
-}
 
+  onUploadFile(file: File) {
+    this.fileIsUploading = true;
+    this.booksService.uploadFile(file).then((url: string) => {
+      this.fileUrl = url;
+      this.fileIsUploading = false;
+      this.fileUploaded = true;
+    });
+  }
+
+  detectFiles(event) { // recoit event du DOM
+    this.onUploadFile(event.target.files[0]);
+}
+}
